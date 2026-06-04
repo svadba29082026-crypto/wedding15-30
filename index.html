@@ -197,6 +197,11 @@ html,body{font-family:'Montserrat',sans-serif;background:#d8ccc0}
         <div id="drink-other-wrap" style="display:none;margin-top:6px"><input class="g-inp" id="drink-other" type="text" placeholder="Напишите..." oninput="chk()" style="font-size:12px;padding:7px 14px"></div>
       </div>
     </div>
+    <div style="margin-bottom:28px">
+      <p class="g-lbl">Пожелания по музыке</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:13px;font-style:italic;color:#b8946a;margin-bottom:10px">Напишите ваши любимые песни — мы постараемся включить их в плейлист ♥</p>
+      <textarea id="music" class="g-inp" placeholder="Например: Валерий Меладзе — Самба белого мотылька..." oninput="chk()" style="border-radius:14px;padding:12px 18px;min-height:80px;resize:vertical;width:100%;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px"></textarea>
+    </div>
     <div class="sub-w"><button class="sub" id="subbtn" onclick="doSubmit()" disabled>Отправить ответы</button></div>
   </div>
   <div class="ty" id="ty">
@@ -282,6 +287,9 @@ function doSubmit(){
   body.append('Предпочтения по еде', foodVal);
   body.append('Алкоголь', drinkVals.join(', '));
   if(wishesVal) body.append('Пожелания', wishesVal);
+  var musicEl=document.getElementById('music');
+  var musicVal=musicEl?musicEl.value.trim():'';
+  if(musicVal) body.append('Пожелания по музыке', musicVal);
 
   var btn=document.getElementById('subbtn');
   btn.textContent='Отправляем...';
